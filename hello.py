@@ -11,7 +11,7 @@ api = Flask(__name__)
 
 @api.route('/')
 def init_root():
-    return 'CrapyBot'
+  return 'CrapyBot'
 
 # @api.route('/companies', methods=['GET'])
 # def get_companies():
@@ -20,9 +20,11 @@ def init_root():
 
 @api.route('/crap', methods=["POST"])
 def postcrap():
-    input_json = request.get_json(force=True)
-    response = requests.get(input_json['url'])
-    return json.dumps(response.text)
+  input_json = request.get_json(force=True)
+  headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36'}
+  response = requests.get(input_json['url'], headers=headers)
+  # response = requests.get(input_json['url'])
+  return json.dumps(response.text)
 
 if __name__ == '__main__':
-    api.run()
+  api.run()
