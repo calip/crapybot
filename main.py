@@ -18,8 +18,8 @@ def __init__():
 @api.route('/crap', methods=["POST"])
 def postcrap():
   input_json = request.get_json(force=True)
-  crapy = Crapy()
-  datas = crapy.get_data(input_json['url'])
+  crapy = Crapy(input_json['url'])
+  datas = crapy.get_data()
   return datas
 
 if __name__ == '__main__':
