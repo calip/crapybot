@@ -1,0 +1,1 @@
+MARKETPLACES = ['tokopedia', 'bukalapak', 'shopee']
