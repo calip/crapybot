@@ -30,10 +30,22 @@ class Crapy:
     else:
       return 'Target not found!'
 
-
   def get_data(self):
+    switcher = {
+      'tokopedia' : self.get_tokopedia(),
+      'bukalapak' : self.get_bukalapak(),
+      'shopee' : self.get_shopee()
+    }
+    return switcher.get(self.domain, lambda: "Invalid arg")
+    
+  def get_tokopedia(self):
     soup = BeautifulSoup(self.driver.page_source, 'html.parser')
     self.driver.close()
     title = soup.find('div', id='zeus-header')
     return title.prettify()
-    
+  
+  def get_bukalapak(self):
+    return 'bukalapak'
+  
+  def get_shopee(self):
+    return 'shopee'
